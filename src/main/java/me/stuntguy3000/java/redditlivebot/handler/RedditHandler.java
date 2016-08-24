@@ -198,11 +198,10 @@ public class RedditHandler {
     public void postLiveThreadUpdate(LiveThreadChildrenData data, String threadID) {
         String author = data.getAuthor();
         String body = data.getBody();
-		body = body.replace("_", "\\_").replace("*", "\\*").replace("[", "\\[").replace("]", "\\]");
-		body = body.replace("(", "\\(").replace(")", "\\)").replace("`", "\\`")
-		
+        body = body.replace("_", "\\_").replace("*", "\\*").replace("[", "\\[").replace("]", "\\]");
+        body = body.replace("(", "\\(").replace(")", "\\)").replace("`", "\\`");
+
         RedditLiveBot.instance.getSubscriptionHandler().forwardMessage(Lang.send(TelegramHook.getRedditLiveChat(),
                 Lang.LIVE_THREAD_UPDATE, threadID, author, body));
     }
 }
-    
